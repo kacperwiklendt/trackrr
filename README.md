@@ -1,5 +1,7 @@
 # Trackrr
 
+**[Open the live demo](https://kacperwiklendt.github.io/trackrr/)** · [Build and deployment](https://github.com/kacperwiklendt/trackrr/actions/workflows/pages.yml)
+
 A calm, touch-first weekly planner and goal tracker. Built with vanilla JavaScript, CSS and browser APIs, with no frontend runtime dependencies.
 
 > This repository includes a working **GitHub Pages portfolio edition**. It runs without sign-in and keeps each visitor's data in their own browser. The separately hosted private edition adds authenticated cloud backup. GitHub Pages does not run that backend.
@@ -80,7 +82,7 @@ The private hosted edition is deployed on an authenticated Sites gateway. The ga
 - Model tests exercise recurrence, weekly caps, rest-protected streaks, legacy completion and backup validation.
 - Backend contract tests exercise missing identity, user isolation, malformed data, stale revision conflicts and previous-snapshot retention using an in-memory R2 substitute.
 
-These checks are not a Lighthouse score or a physical-device benchmark. Browser preview infrastructure was unavailable during this update. Visual QA, VoiceOver, Safari offline launch, sound, drag/drop and real-device haptics still need the checks below before claiming production-level device coverage.
+These checks are not a Lighthouse score or a physical-device benchmark. The deployed GitHub Pages edition was smoke-tested in desktop Chromium on 21 November 2026: the interface loaded, a goal was created and completed, its completion survived reload, and the test goal was removed. VoiceOver, Safari offline launch, sound, drag/drop and real-device haptics still need the checks below before claiming production-level device coverage.
 
 ## Manual release checklist
 
