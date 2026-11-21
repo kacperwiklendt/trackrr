@@ -1,0 +1,1 @@
+{"name": "Trackrr", "short_name": "Trackrr", "lang": "pl", "start_url": "./", "scope": "./", "display": "standalone", "background_color": "#151517", "theme_color": "#151517", "icons": [{"src": "trackrr-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}]}

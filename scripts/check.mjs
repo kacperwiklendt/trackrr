@@ -1,0 +1,6 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';import {gzipSync} from 'node:zlib';
+for(const f of ['app.js','model.js','i18n.js','sw.js'])new vm.Script(fs.readFileSync('public/'+f,'utf8'),{filename:f});
+const ctx=vm.createContext({localStorage:{getItem:()=>null}});vm.runInContext(fs.readFileSync('public/i18n.js','utf8')+`;for(const d of Object.values(dictionary))for(const [k,v]of Object.entries(d))if(!v)throw Error(k)`,ctx);
+const html=fs.readFileSync('public/index.html','utf8');assert.ok(html.includes('<title>Trackrr</title>'));
+const app=fs.readFileSync('public/app.js','utf8');assert.ok(app.includes('<details class=advanced>'));assert.ok(app.includes("['day','agenda','board','month']"));
+const files=['app.js','model.js','i18n.js','style.css','index.html','public-sans.ttf','trackrr-icon.png'];let total=0;for(const f of files){const bytes=fs.readFileSync('public/'+f);const size=f.endsWith('.png')||f.endsWith('.ttf')?bytes.length:gzipSync(bytes).length;total+=size}assert.ok(total<250000,'Initial assets exceed 250 kB budget');console.log('Syntax, translations, UI contracts and asset budget passed: '+Math.round(total/1024)+' KiB (text gzip; binary raw). Not a runtime/Lighthouse score.');
